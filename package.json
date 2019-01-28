@@ -1,10 +1,10 @@
 {
-  "name": "veReact-cli",
+  "name": "ve-react-cli",
   "version": "1.0.0",
   "main": "index.js",
   "typings": "types.d.ts",
   "description": "React Build Tool",
-  "author": "visiba Group ab <emil.nordling@visibacare.com>",
+  "author": "Visiba Group AB <emil.nordling@visibacare.com>",
   "license": "MIT",
   "repository": {
     "type": "git"

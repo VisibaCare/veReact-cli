@@ -47,6 +47,6 @@
     "enzyme-to-json": "^3.3.5",
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.13.1",
-    "veReact-cli": "^1.0.0"
+    "ve-react-cli": "^1.0.0"
   }
 }

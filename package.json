@@ -1,21 +1,20 @@
 {
   "name": "ve-react-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "typings": "types.d.ts",
   "description": "React Build Tool",
   "author": "Visiba Group AB <emil.nordling@visibacare.com>",
   "license": "MIT",
   "repository": {
+    "url": "https://github.com/VisibaCare/veReact-cli",
     "type": "git"
   },
   "bin": {
     "ve": "./bin/veReact.js"
   },
-  "homepage": "./",
   "engines": {
-    "node": ">=8.12.0",
-    "yarn": ">=1.10.1"
+    "node": ">=10.15.0"
   },
   "dependencies": {
     "@babel/cli": "^7.1.0",
@@ -69,5 +68,8 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-server": "^3.1.10"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

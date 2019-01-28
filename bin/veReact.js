@@ -46,11 +46,14 @@ program
   .option('-s, --start', '', () => {
     runScript = 'server';
   })
-  .option('-p', '--port', '', () => {
-    console.log('ey')
+  .option('-p', '--port', '', (newPort) => {
+    port = newPort;
   })
-  .option('-i', '--input', '', () => {
-    console.log('ye')
+  .option('-i', '--input', '', (newInput) => {
+    input = newInput;
+  })
+  .option('-o', '--output', '', (newOutput) => {
+    input = newOutput;
   })
   .parse(process.argv);
 

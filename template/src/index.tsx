@@ -44,7 +44,7 @@ if (process.env.NODE_ENV !== 'production' && module.hot) {
  * Installs Service Worker for production build.
  */
 if (process.env.NODE_ENV === 'production') {
-  const runtime = require('veReact-cli/runtime');
+  const runtime = require('ve-react-cli/runtime');
 
   runtime.install({
     onUpdating: () => {

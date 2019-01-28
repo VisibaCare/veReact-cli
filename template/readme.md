@@ -1,24 +1,31 @@
 # VE BoilerPlate
 This project was generated with [VE React CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+## Getting started
+Install node modules using [Yarn](https://yarnpkg.com/lang/en/). NPM does not currently work because of this [NPM issue](https://npm.community/t/packages-with-peerdependencies-are-incorrectly-hoisted/4794/5).
+
+```bash
+$ yarn install
+```
+
 ## Development server
 To start a dev server, run the following:
 ```bash
-$ npm run dev
+$ yarn dev
 ```
 The application will automatically reload if you change any of the source files.
 
 ## Production Build
 To build for production, run the following:
 ```bash
-$ npm run build
+$ yarn build
 ```
 The output files will be stored in the `dist/` directory.
 
 ## Running tests
 To run tests, run the following:
 ```bash
-$ npm run dev
+$ yarn dev
 ```
 The tests are served with [jest](https://jestjs.io/).
 

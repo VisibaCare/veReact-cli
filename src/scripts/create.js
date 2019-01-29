@@ -1,12 +1,16 @@
 const fse = require('fs-extra');
 const path = require('path');
+const chalk = require('chalk');
+const dogOrCat = require('../dogOrCat');
 const { getGlobalState } = require('../globalState');
-const { dir } = getGlobalState();
+const { dir, name } = getGlobalState();
 
 async function copyTemplate() {
   try {
     await fse.mkdir(dir);
     await fse.copy(path.join(__dirname, '../../templates/create'), `${process.cwd()}/${dir}`);
+
+    console.log(`Created ${chalk.green(name)} in ${chalk.underline.bold(process.cwd())} ${dogOrCat()}`);
   } catch (err) {
     console.error(err);
   }

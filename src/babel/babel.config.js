@@ -3,10 +3,11 @@ const paths = getPaths();
 
 module.exports = {
   presets: [
-    ['@babel/env', {
+    ['@babel/preset-env', {
       'modules': false,
       'targets': {
         'chrome': 70,
+        'firefox': 64,
       },
     }],
     '@babel/react',
@@ -39,10 +40,11 @@ module.exports = {
   "env": {
     "test": {
       presets: [
-        ['@babel/env', {
+        ['@babel/preset-env', {
           'modules': 'commonjs',
           'targets': {
             'chrome': 70,
+            'firefox': 64,
           },
         }],
         '@babel/react',

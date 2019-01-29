@@ -29,7 +29,7 @@ module.exports = {
   },
   output: {
     filename: 'scripts/[name]-[hash].js',
-    chunkFilename: 'scripts/[name]-[hash].chunk.js',
+    chunkFilename: 'scripts/[name]-[chunkhash].chunk.js',
     path: paths.appBuild,
     publicPath: paths.publicPath,
   },

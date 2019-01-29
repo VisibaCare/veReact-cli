@@ -11,7 +11,7 @@ Development environments for modern JavaScript has become quite a hassle to set 
 
 It solves two problems:
 * It'll trim off the stuff that's only relevant when first setting up the project. All the configurations and packages that exists to serve the project will be "hidden" for the developers, it'll allow us to focus on what the project is primarily made of.
-* Makes it possible to sync multiple React environments to use the same configurations without the need to update individual files in each. All that's needed is to install the newest.
+* Makes it possible to sync multiple React environments to use the same configurations without the need to update individual files in each. All that's needed is to install the newest version of `ve-react-cli`.
 
 ## Getting started
 Install the package globally
@@ -24,6 +24,7 @@ $ yarn global add ve-react-cli --prefix /usr/local
 
 ## Commands
 List of available `ve` commands.
+
 ### Global
 * new project: `--new {name of project}` short: `-n`
 
@@ -35,7 +36,7 @@ List of available `ve` commands.
 * overwrite default port: `--input` short: `-i`
 * overwrite default port: `--output` short: `-o`
 
-## Notable packages
+## Notable packages that's used
 | Tools                    | Version | Info                                          |
 |--------------------------|---------|-----------------------------------------------|
 | webpack                  | ^4.27.1 | Dev server and bundler                        |
@@ -43,6 +44,13 @@ List of available `ve` commands.
 | @babel/preset-react      | ^7.0.0  | Transforms JSX                                |
 | @babel/preset-typescript | ^7.1.0  | Enables TS in a Babel environment             |
 | offline-plugin           | ^5.0.6  | Generates Service Worker with offline support |
+
+## Todos
+* Add support to read and write out variables when copying templates, e.g. version.
+* Add ways to extend and override Babel config & Webpack config. 
+* Add "create component" & "create page" commands.
+* Add a way to create custom templates.
+* Fix the commands to be "actions", they now looks like optional parameters. (e.g.: `ve dev -p 5000`, instead of `ve --dev -p 5000`)
 
 ## License
 This project is licensed under the MIT License - see the `LICENSE` file for details.

@@ -3,9 +3,11 @@ setPaths();
 
 const paths = getPaths();
 
-const { join, resolve } = require('path');
+const { join } = require('path');
 const express = require('express');
 const compression = require('compression');
+const chalk = require('chalk');
+const dogOrCat = require('../dogOrCat');
 
 // Init app
 const server = express();
@@ -25,9 +27,11 @@ server.use(express.static(paths.appBuild, {
 }));
 
 // Index route
-server.use((req, res) => res.sendFile(join(paths.appBuild, 'index.html')));
+server.use((_, res) => res.sendFile(join(paths.appBuild, 'index.html')));
 
 // Listen
 server.listen(port, () => {
-  console.log(`> Ready on http://localhost:${port}`);
+  console.log(`${chalk.bgGreen('DONE')} Successfully started Express server`);
+  console.log(chalk.bgBlue('I'));
+  console.log(`          Ready on http://localhost:${port} ${dogOrCat()}`);
 })

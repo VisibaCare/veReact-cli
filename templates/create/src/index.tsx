@@ -36,7 +36,18 @@ if (process.env.NODE_ENV !== 'production' && module.hot) {
   module.hot.accept('./ui/components/App', () => {
     console.log(`[HMR] update`);
 
-    render(App);
+    // Temporary solution of a bug.
+    // The timeout is here because of a weird issue with react-hot-loader in 
+    // combination with ve-react-cli.
+
+    // The issue is that the accept function seems to be called before it's 
+    // supposed to, causing the application to slack behind with one hot module.
+
+    // By moving the render function one tick ahead in the event loop, it'll 
+    // render with the new hot module.
+
+    // If anyone know why this happens, and know the solution, please make a PR! 😅
+    setTimeout(() => render(App));
   });
 }
 

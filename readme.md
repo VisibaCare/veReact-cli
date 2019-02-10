@@ -1,5 +1,3 @@
-# **⚠ The CLI is currently not production ready. It's using react@16.8.0-alpha.0 to gain early access for Hooks. ⚠**
-
 # VE React CLI
 
 ### Development tool for consistent React environments.
@@ -26,31 +24,34 @@ $ yarn global add ve-react-cli --prefix /usr/local
 List of available `ve` commands.
 
 ### Global
-* new project: `--new {name of project}` short: `-n`
+* new project: `new {name of project}`
 
 ### Local
-* development: `--dev` short: `-d`
-* production: `--build` short: `-b`
-* run production: `--start` short: `-s`
-* overwrite default port: `--port` short: `-p`
-* overwrite default port: `--input` short: `-i`
-* overwrite default port: `--output` short: `-o`
+* development: `dev {options}`
+* production: `build {options}`
+* run production: `start {options}`
+
+### Optional
+* override default port (default: `8000`): `-p, --port`
+* override default input (default: `./src`): `-i, --input`
+* override default output (default: `./dist`): `-o, --output`
 
 ## Notable packages that's used
-| Tools                    | Version | Info                                          |
-|--------------------------|---------|-----------------------------------------------|
-| webpack                  | ^4.27.1 | Dev server and bundler                        |
-| @babel/core              | ^7.0.0  | ECMAScript transpiler                         |
-| @babel/preset-react      | ^7.0.0  | Transforms JSX                                |
-| @babel/preset-typescript | ^7.1.0  | Enables TS in a Babel environment             |
-| offline-plugin           | ^5.0.6  | Generates Service Worker with offline support |
+| Tools                          | Version | Info                                          |
+|--------------------------------|---------|-----------------------------------------------|
+| webpack                        | ^4.27.1 | Dev server and bundler                        |
+| @babel/core                    | ^7.0.0  | ECMAScript transpiler                         |
+| @babel/preset-react            | ^7.0.0  | Transforms JSX                                |
+| @babel/preset-typescript       | ^7.1.0  | Enables TS in a Babel environment             |
+| babel-plugin-preval            | ^3.0.1  | Pre-evaluate code at build-time               |
+| babel-plugin-styled-components | ^1.5.0  | Enhances debugging and minifies CSS           |
+| offline-plugin                 | ^5.0.6  | Generates Service Worker with offline support |
 
 ## Todos
 * Add support to read and write out variables when copying templates, e.g. version.
 * Add ways to extend and override Babel config & Webpack config. 
 * Add "create component" & "create page" commands.
 * Add a way to create custom templates.
-* Fix the commands to be "actions", they now looks like optional parameters. (e.g.: `ve dev -p 5000`, instead of `ve --dev -p 5000`)
 
 ## License
 This project is licensed under the MIT License - see the `LICENSE` file for details.

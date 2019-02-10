@@ -1,4 +1,3 @@
-import React from 'react';
 import * as page from './pages';
 
 const routes = [
@@ -7,11 +6,7 @@ const routes = [
     path: '/',
     exact: true,
     component: page.Home,
-  },
-  {
-    key: '404',
-    component: page.NotFound,
-  },
+  }
 ];
 
 export default routes;

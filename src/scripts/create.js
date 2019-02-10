@@ -3,14 +3,16 @@ const path = require('path');
 const chalk = require('chalk');
 const dogOrCat = require('../dogOrCat');
 const { getGlobalState } = require('../globalState');
-const { dir, name } = getGlobalState();
+const { dir } = getGlobalState();
+
+console.log(dir)
 
 async function copyTemplate() {
   try {
     await fse.mkdir(dir);
-    await fse.copy(path.join(__dirname, '../../templates/create'), `${process.cwd()}/${dir}`);
+    await fse.copy(path.join(__dirname, '../../templates/project'), `${process.cwd()}/${dir}`);
 
-    console.log(`Created ${chalk.green(name)} in ${chalk.underline.bold(process.cwd())} ${dogOrCat()}`);
+    console.log(`Created ${chalk.green(dir)} in ${chalk.underline.bold(process.cwd())} ${dogOrCat()}`);
   } catch (err) {
     console.error(err);
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../../ui/common/Icon/index';
+import { HomeComponent } from './types';
 
 const Content = styled('div')<{ fontSize: number }>`
   display: flex;
@@ -17,6 +18,6 @@ const Content = styled('div')<{ fontSize: number }>`
   }
 `;
 
-const Home: React.FC = () => <Content fontSize={4}>Hello world! <Icon icon='rocket' /></Content>;
+const Home: React.FC<HomeComponent.Props> = () => <Content fontSize={4}>Hello wosrld! <Icon icon='rocket' /></Content>;
 
 export default Home;

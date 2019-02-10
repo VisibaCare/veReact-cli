@@ -1,6 +1,6 @@
 {
   "name": "ve-react-cli",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "main": "index.js",
   "typings": "types.d.ts",
   "description": "React Build Tool",
@@ -14,7 +14,7 @@
     "ve": "./bin/veReact.js"
   },
   "engines": {
-    "node": ">=10.15.0"
+    "node": ">=10.15.1"
   },
   "dependencies": {
     "@babel/cli": "^7.1.0",
@@ -59,6 +59,8 @@
     "fs-extra": "^7.0.1",
     "html-webpack-plugin": "^3.2.0",
     "offline-plugin": "^5.0.6",
+    "prepack": "^0.2.54",
+    "prepack-webpack-plugin": "^1.1.2",
     "react-dev-utils": "^6.1.1",
     "react-hot-loader": "^4.6.2",
     "terser-webpack-plugin": "^1.1.0",

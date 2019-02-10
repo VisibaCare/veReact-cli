@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 'use strict';
+
 const path = require('path');
 const resolvePath = (src) => path.join(__dirname, `../src/${src}`);
-
 const program = require('commander');
-
 const { setGlobalState } = require(resolvePath('globalState'));
 const {
   DEFAULT_INPUT_FOLDER,
@@ -15,56 +14,66 @@ const {
 } = require(resolvePath('constants'));
 
 // Available scripts
-let runScript = '__NO_SCRIPT__';
 const scriptMap = new Map();
-scriptMap.set('create', () => require(resolvePath('scripts/create')));
+
+// Locals
 scriptMap.set('dev', () => require(resolvePath('scripts/development')));
 scriptMap.set('build', () => require(resolvePath('scripts/production')));
 scriptMap.set('server', () => require(resolvePath('scripts/server')));
 
-// Optional variables
-let port;
-let input;
-let output;
-let name;
-let dir;
+// Globals
+scriptMap.set('create', () => require(resolvePath('scripts/create')));
+
+// Execute command
+function run(runScript, cmd = {}) {
+  const { port, input, output, name, dir } = cmd;
+
+  setGlobalState({
+    input: input || DEFAULT_INPUT_FOLDER,
+    output: output || DEFAULT_OUTPUT_FOLDER,
+    name: name || DEFAULT_PROJECT_NAME,
+    port: port || DEFAULT_PORT,
+    dir: dir || DEFAULT_DIR,
+  });
+  
+  process.env.PORT = port || 8000;
+  
+  if (scriptMap.has(runScript)) {
+    scriptMap.get(runScript)();
+  } else {
+    console.log(`
+      Command not found.
+      Type "ve --help" for available commands.
+    `);
+  }
+} 
 
 // Cli
 program
-  .option('-n, --new <name>', '', (name) => {
-    runScript = 'create';
+  .version(require(path.join(__dirname, '../package.json')).version);
 
-    // Name of folder when creating new project
-    dir = name;
-  })
-  .option('-d, --dev', '', () => {
-    runScript = 'dev';
-  })
-  .option('-b, --build', '', () => {
-    runScript = 'build';
-  })
-  .option('-s, --start', '', () => {
-    runScript = 'server';
-  })
-  .option('-p', '--port', '', (newPort) => {
-    port = newPort;
-  })
-  .option('-i', '--input', '', (newInput) => {
-    input = newInput;
-  })
-  .option('-o', '--output', '', (newOutput) => {
-    input = newOutput;
-  })
-  .parse(process.argv);
+program
+  .command('dev')
+  .option('-p, --port <port>', 'Sets "process.env.PORT" to value')
+  .option('-i --input <input>', 'Override default application src')
+  .option('-o --output <output>', 'Override default production build destination')
+  .action((cmd) => run('dev', cmd));
 
-setGlobalState({
-  input: input || DEFAULT_INPUT_FOLDER,
-  output: output || DEFAULT_OUTPUT_FOLDER,
-  name: name || DEFAULT_PROJECT_NAME,
-  port: port || DEFAULT_PORT,
-  dir: dir || DEFAULT_DIR,
-});
+program
+  .command('build')
+  .option('-i --input <input>', '')
+  .option('-o --output <output>', '')
+  .action((cmd) => run('build', cmd));
 
-process.env.PORT = port || 8000;
+program
+  .command('start')
+  .option('-p, --port <port>', '')
+  .option('-i --input <input>', '')
+  .option('-o --output <output>', '')
+  .action((cmd) => run('start', cmd));
 
-if (scriptMap.has(runScript)) scriptMap.get(runScript)();
+program
+  .command('new <dir>')
+  .action((dir) => run('create', { dir }));
+
+program.parse(process.argv);

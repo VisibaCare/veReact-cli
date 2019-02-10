@@ -7,8 +7,11 @@ const OfflinePlugin = require('offline-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const base = require('./webpack.config.base');
 const { getPaths } = require('../paths');
+const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
 
 const paths = getPaths();
+
+const prePackConfiguration = {};
 
 module.exports = {
   ...base,
@@ -19,9 +22,10 @@ module.exports = {
     app: paths.appIndex,
   },
   stats: {
-    all: false,
+    all: true,
     modules: true,
-    maxModules: 0,
+    maxModules: 15,
+    chunks: true,
     errors: true,
     warnings: true,
     moduleTrace: true,

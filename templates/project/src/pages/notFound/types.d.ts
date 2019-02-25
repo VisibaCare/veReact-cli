@@ -1,6 +1,6 @@
 import { RouteComponentProps } from '@reach/router';
 
-export namespace HomeComponent {
+export namespace NotFoundComponent {
   interface Props extends RouteComponentProps {}
 
   interface Style {}

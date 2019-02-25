@@ -1,5 +1,5 @@
 # VE BoilerPlate
-This project was generated with [VE React CLI](https://github.com/VisibaCare/veReact-cli) version 1.1.0.
+This project was generated with [VE React CLI](https://github.com/VisibaCare/veReact-cli) version 1.2.0.
 
 ## Getting started
 Install node modules using [Yarn](https://yarnpkg.com/lang/en/). NPM does not currently work because of this [NPM issue](https://npm.community/t/packages-with-peerdependencies-are-incorrectly-hoisted/4794/5).
@@ -8,26 +8,56 @@ Install node modules using [Yarn](https://yarnpkg.com/lang/en/). NPM does not cu
 $ yarn install
 ```
 
-## Development server
+## Development
+### Dev server
+
 To start a dev server, run the following:
 ```bash
 $ yarn dev
 ```
 The application will automatically reload if you change any of the source files.
 
+### Component Documentation server
+
+To start the component documentation server, run the following:
+```bash
+$ yarn docz
+```
+
 ## Production Build
-To build for production, run the following:
+
+### Application Build
+To build the application for production, run the following:
 ```bash
 $ yarn build
 ```
 The output files will be stored in the `dist/` directory.
 
-## Running tests
-To run tests, run the following:
+_The production build can also be served on a built in express server (mostly to test its service worker) by running `yarn start`_
+
+### Documentation client build
+To generate a production Component Documentation, run the following:
 ```bash
-$ yarn dev
+$ yarn docz:build
 ```
-The tests are served with [jest](https://jestjs.io/).
+
+## Running tests
+### Unit & Integration
+To run these tests, run the following:
+```bash
+$ yarn test
+```
+These tests are served with [jest](https://jestjs.io/).
+
+# TypeScript
+This bolierplate does not use the TypeScript emitter, only the compiler in the background as a type checker.
+
+The code is being parsed with Babel, this means that any type that is wrong won't interfere with the code that Babel emits. It's recommended to validate the code base's types before it's supposed to be built to production.
+
+To validate the types, run the following:
+```bash
+$ yarn validate
+```
 
 ## Debug
 To use VS Code's debugger: 

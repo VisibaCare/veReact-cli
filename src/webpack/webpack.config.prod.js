@@ -82,23 +82,6 @@ module.exports = {
         ignore: ['index.html'],
       },
     ]),
-    new OfflinePlugin({
-      appShell: '/',
-      version: '[hash]',
-      AppCache: false,
-      updateStrategy: 'changed',
-      responseStrategy: 'cache-first',
-      autoUpdate: 1000 * 60 * 2,
-      ServiceWorker: {
-        minify: true,
-        events: true,
-        navigateFallbackURL: '/',
-      },
-      caches: {
-        main: [':rest:'],
-        optional: ['scripts/*.chunk.js', 'assets/*.**', 'icons/*.**', 'treeData/*.**']
-      },
-    }),
     new HtmlWebpackPLugin({
       template: paths.appHtml,
       inject: true,
@@ -113,6 +96,44 @@ module.exports = {
         minifyJS: true,
         minifyCSS: true,
         minifyURLs: true,
+      },
+    }),
+    new OfflinePlugin({
+      appShell: '/',
+      version: '[hash]',
+      AppCache: {
+        events: true,
+        publicPath: '/appcache',
+        FALLBACK: {
+          '/': '/'
+        },
+      },
+      externals: [
+        '/'
+      ],
+      updateStrategy: 'changed',
+      responseStrategy: 'cache-first',
+      autoUpdate: 1000 * 60 * 2,
+      ServiceWorker: {
+        minify: true,
+        events: true,
+        navigateFallbackURL: '/',
+        publicPath: '/sw.js'
+      },
+      caches: {
+        main: [
+          'index.html',
+          '/',
+          ':rest:',
+        ],
+        additional: [
+          ':externals:',
+        ],
+        optional: [
+          'scripts/*.chunk.js',
+          'assets/*.**',
+          'icons/*.**',
+        ]
       },
     }),
     new BundleAnalyzerPlugin({

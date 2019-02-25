@@ -1,3 +1,3 @@
 export { default as Home } from './home';
 
-export { default as notFound } from './notFound';
+export { default as NotFound } from './notFound';

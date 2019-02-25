@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Svg = styled('svg')`
+const Svg = styled.svg`
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -13,4 +13,4 @@ const Svg = styled('svg')`
 
 export default {
   Svg,
-}
+};

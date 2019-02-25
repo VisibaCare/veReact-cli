@@ -5,8 +5,6 @@ const dogOrCat = require('../dogOrCat');
 const { getGlobalState } = require('../globalState');
 const { dir } = getGlobalState();
 
-console.log(dir)
-
 async function copyTemplate() {
   try {
     await fse.mkdir(dir);

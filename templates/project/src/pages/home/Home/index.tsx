@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Icon from '../../../ui/common/Icon/index';
 import { HomeComponent } from './types';
 
-const Content = styled('div')<{ fontSize: number }>`
+const Content = styled.div<{ fontSize: number }>`
   display: flex;
   flex-direction: row;
   height: 100vh;
@@ -18,6 +18,10 @@ const Content = styled('div')<{ fontSize: number }>`
   }
 `;
 
-const Home: React.FC<HomeComponent.Props> = () => <Content fontSize={4}>Hello wosrld! <Icon icon='rocket' /></Content>;
+const Home: React.FC<HomeComponent.Props> = () => {
+  return (
+    <Content fontSize={4}>Hello world! <Icon icon='rocket' /></Content>
+  );
+};
 
 export default Home;

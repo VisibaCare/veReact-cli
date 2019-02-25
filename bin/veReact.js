@@ -25,13 +25,13 @@ scriptMap.set('server', () => require(resolvePath('scripts/server')));
 scriptMap.set('create', () => require(resolvePath('scripts/create')));
 
 // Execute command
-function run(runScript, cmd = {}) {
-  const { port, input, output, name, dir } = cmd;
+function run(runScript, cmd) {
+  const { port, input, output, dir, label } = cmd;
 
   setGlobalState({
     input: input || DEFAULT_INPUT_FOLDER,
     output: output || DEFAULT_OUTPUT_FOLDER,
-    name: name || DEFAULT_PROJECT_NAME,
+    name: label || DEFAULT_PROJECT_NAME,
     port: port || DEFAULT_PORT,
     dir: dir || DEFAULT_DIR,
   });
@@ -57,19 +57,22 @@ program
   .option('-p, --port <port>', 'Sets "process.env.PORT" to value')
   .option('-i --input <input>', 'Override default application src')
   .option('-o --output <output>', 'Override default production build destination')
+  .option('-l, --label <label>', 'Sets a name for the project')
   .action((cmd) => run('dev', cmd));
 
 program
   .command('build')
-  .option('-i --input <input>', '')
-  .option('-o --output <output>', '')
+  .option('-i --input <input>', 'Override default application src')
+  .option('-o --output <output>', 'Override default bundle destination')
+  .option('-l, --label <label>', 'Sets a name for the project')
   .action((cmd) => run('build', cmd));
 
 program
   .command('start')
-  .option('-p, --port <port>', '')
-  .option('-i --input <input>', '')
-  .option('-o --output <output>', '')
+  .option('-p, --port <port>', 'Sets "process.env.PORT" to value')
+  .option('-i --input <input>', 'Override default application src')
+  .option('-o --output <output>', 'Override default bundle destination')
+  .option('-l, --label <label>', 'Sets a name for the project')
   .action((cmd) => run('start', cmd));
 
 program

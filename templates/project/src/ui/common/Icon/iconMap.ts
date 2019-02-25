@@ -9,6 +9,8 @@ type IconMap = {
   }
 }
 
+export type Icons = keyof Dictionary;
+
 const iconMap: IconMap = preval`
   const fs = require('fs');
   const { join, resolve } = require('path');
@@ -66,7 +68,5 @@ const iconMap: IconMap = preval`
     return acc;
   }, {});
 `;
-
-export type Icons = keyof Dictionary;
 
 export default iconMap;

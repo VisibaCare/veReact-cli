@@ -9,8 +9,18 @@ const dogOrCat = require('../dogOrCat');
 
 const paths = getPaths();
 
+const { rules, ...rest } = base;
+
+// Adds react-hot-loader's Webpack loader.
+rules.push({
+  test: /\.(js|jsx|ts|tsx)$/,
+  include: /node_modules/,
+  use: ['react-hot-loader/webpack'],
+});
+
 const test = {
-  ...base,
+  ...rest,
+  rules,
   mode: 'development',
   entry: {
     app: [
@@ -24,7 +34,7 @@ const test = {
     publicPath: `http://localhost:${process.env.PORT}/`,
 		filename: `bundle-[name].js`
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   plugins: [
     new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
     new webpack.NamedModulesPlugin(),

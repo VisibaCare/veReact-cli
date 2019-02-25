@@ -1,19 +1,20 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import routes from '../../../routes';
 import GlobalStyle from '../GlobalStyle';
-import { notFound } from '../../../pages';
+import { Router } from '@reach/router';
+import NotFound from '../../../pages/notFound/index';
+import { hot } from 'react-hot-loader/root';
 
-const App: React.FC = () => (
-  <BrowserRouter>
+const App: React.FC = () => {
+  return (
     <Fragment>
+      <Router>
+        {routes.map((page) => <page.component path={page.path} key={page.key} />)}
+        <NotFound default />
+      </Router>
       <GlobalStyle />
-      <Switch>
-        {routes.map((pages, index) => <Route key={index} {...pages} />)}
-        <Route component={notFound}/>
-      </Switch>
     </Fragment>
-  </BrowserRouter>
-);
+  );
+};
 
-export default App;
+export default hot(App);

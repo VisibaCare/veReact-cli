@@ -9,18 +9,15 @@ const dogOrCat = require('../dogOrCat');
 
 const paths = getPaths();
 
-const { rules, ...rest } = base;
-
 // Adds react-hot-loader's Webpack loader.
-rules.push({
+base.module.rules.push({
   test: /\.(js|jsx|ts|tsx)$/,
   include: /node_modules/,
   use: ['react-hot-loader/webpack'],
 });
 
 const test = {
-  ...rest,
-  rules,
+  ...base,
   mode: 'development',
   entry: {
     app: [

@@ -19,7 +19,7 @@ const scriptMap = new Map();
 // Locals
 scriptMap.set('dev', () => require(resolvePath('scripts/development')));
 scriptMap.set('build', () => require(resolvePath('scripts/production')));
-scriptMap.set('server', () => require(resolvePath('scripts/server')));
+scriptMap.set('start', () => require(resolvePath('scripts/server')));
 
 // Globals
 scriptMap.set('create', () => require(resolvePath('scripts/create')));

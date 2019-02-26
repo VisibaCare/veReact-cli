@@ -4,6 +4,7 @@ let globalState = {
   name: null,
   port: null,
   dir: null,
+  publicPath: null,
 };
 
 function setGlobalState(newState) {

@@ -11,6 +11,7 @@ const {
   DEFAULT_PROJECT_NAME,
   DEFAULT_PORT,
   DEFAULT_DIR,
+  DEFAULT_PUBLIC_PATH,
 } = require(resolvePath('constants'));
 
 // Available scripts
@@ -26,7 +27,7 @@ scriptMap.set('create', () => require(resolvePath('scripts/create')));
 
 // Execute command
 function run(runScript, cmd) {
-  const { port, input, output, dir, label } = cmd;
+  const { port, input, output, dir, publicPath, label } = cmd;
 
   setGlobalState({
     input: input || DEFAULT_INPUT_FOLDER,
@@ -34,6 +35,7 @@ function run(runScript, cmd) {
     name: label || DEFAULT_PROJECT_NAME,
     port: port || DEFAULT_PORT,
     dir: dir || DEFAULT_DIR,
+    publicPath: publicPath || DEFAULT_PUBLIC_PATH,
   });
   
   process.env.PORT = port || 8000;
@@ -65,6 +67,7 @@ program
   .option('-i --input <input>', 'Override default application src')
   .option('-o --output <output>', 'Override default bundle destination')
   .option('-l, --label <label>', 'Sets a name for the project')
+  .option('-p, --publicPath <publicPath>', 'Sets a public path')
   .action((cmd) => run('build', cmd));
 
 program

@@ -8,6 +8,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const base = require('./webpack.config.base');
 const { getPaths } = require('../paths');
 const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
+const { publicPath } = require('../globalState').getGlobalState();
 
 const paths = getPaths();
 
@@ -35,7 +36,7 @@ module.exports = {
     filename: 'scripts/[name]-[hash].js',
     chunkFilename: 'scripts/[name]-[chunkhash].chunk.js',
     path: paths.appBuild,
-    publicPath: paths.publicPath,
+    publicPath: publicPath,
   },
   optimization: {
     minimize: true,

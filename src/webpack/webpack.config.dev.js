@@ -31,7 +31,7 @@ const test = {
     publicPath: `http://localhost:${process.env.PORT}/`,
 		filename: `bundle-[name].js`
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
     new webpack.NamedModulesPlugin(),

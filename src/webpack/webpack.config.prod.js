@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const HtmlWebpackPLugin = require('html-webpack-plugin');
-const CleanWebpackPLugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
@@ -74,7 +73,6 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
-    new CleanWebpackPLugin([paths.appBuild], { root: `${process.cwd()}/..` }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([
       {

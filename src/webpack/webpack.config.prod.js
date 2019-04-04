@@ -116,6 +116,7 @@ module.exports = {
       ServiceWorker: {
         minify: true,
         events: true,
+        scope: './',
         navigateFallbackURL: '/',
         publicPath: '/sw.js'
       },

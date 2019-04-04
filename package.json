@@ -1,6 +1,6 @@
 {
   "name": "ve-react-cli",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "index.js",
   "typings": "types.d.ts",
   "description": "React Build Tool",

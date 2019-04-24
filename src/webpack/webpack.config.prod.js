@@ -3,7 +3,6 @@ const HtmlWebpackPLugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const base = require('./webpack.config.base');
 const { getPaths } = require('../paths');
 const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
@@ -16,7 +15,6 @@ const prePackConfiguration = {};
 module.exports = {
   ...base,
   mode: 'production',
-  
   devtool: 'sourcemap',
   entry: {
     app: paths.appIndex,
@@ -29,7 +27,7 @@ module.exports = {
     errors: true,
     warnings: true,
     moduleTrace: true,
-    errorDetails: true
+    errorDetails: true,
   },
   output: {
     filename: 'scripts/[name]-[hash].js',
@@ -104,11 +102,11 @@ module.exports = {
         events: true,
         publicPath: '/appcache',
         FALLBACK: {
-          '/': '/'
+          '/': '/',
         },
       },
       externals: [
-        '/'
+        '/',
       ],
       updateStrategy: 'changed',
       responseStrategy: 'cache-first',
@@ -133,11 +131,8 @@ module.exports = {
           'scripts/*.chunk.js',
           'assets/*.**',
           'icons/*.**',
-        ]
+        ],
       },
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
     }),
   ],
 };

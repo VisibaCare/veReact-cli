@@ -5,6 +5,7 @@ let globalState = {
   port: null,
   dir: null,
   publicPath: null,
+  analyzer: null,
 };
 
 function setGlobalState(newState) {

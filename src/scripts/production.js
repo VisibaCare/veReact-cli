@@ -3,13 +3,24 @@ setPaths();
 
 const webpack = require('webpack');
 const chalk = require('chalk');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { getGlobalState } = require('../globalState');
 
-const { name } = getGlobalState();
+const { name, analyzer } = getGlobalState();
 
 process.env.NODE_ENV = 'production';
 
-webpack(require('../webpack/webpack.config.prod'), (error) => {
+const config = require('../webpack/webpack.config.prod');
+
+if (analyzer) {
+  config.plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+    }),
+  );
+}
+
+webpack(config, (error) => {
   if (error) {
     console.error(error);
 

@@ -27,7 +27,7 @@ scriptMap.set('create', () => require(resolvePath('scripts/create')));
 
 // Execute command
 function run(runScript, cmd) {
-  const { port, input, output, dir, publicPath, label } = cmd;
+  const { port, input, output, dir, publicPath, label, analyzer } = cmd;
 
   setGlobalState({
     input: input || DEFAULT_INPUT_FOLDER,
@@ -36,6 +36,7 @@ function run(runScript, cmd) {
     port: port || DEFAULT_PORT,
     dir: dir || DEFAULT_DIR,
     publicPath: publicPath || DEFAULT_PUBLIC_PATH,
+    analyzer: !!analyzer,
   });
   
   process.env.PORT = port || 8000;
@@ -68,6 +69,7 @@ program
   .option('-o --output <output>', 'Override default bundle destination')
   .option('-l, --label <label>', 'Sets a name for the project')
   .option('-p, --publicPath <publicPath>', 'Sets a public path')
+  .option('-a, --analyzer', 'Enables analyzer')
   .action((cmd) => run('build', cmd));
 
 program

@@ -12,7 +12,7 @@ async function copyTemplate() {
 
     console.log(`Created ${chalk.green(dir)} in ${chalk.underline.bold(process.cwd())} ${dogOrCat()}`);
   } catch (err) {
-    console.error(err);
+    throw new Error(error);
   }
 }
 

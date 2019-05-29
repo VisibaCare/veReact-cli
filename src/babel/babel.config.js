@@ -34,7 +34,6 @@ module.exports = {
     '@babel/plugin-proposal-json-strings',
     '@babel/plugin-proposal-optional-catch-binding',
     'styled-components',
-    //'rawact'
   ],
   "env": {
     "test": {
@@ -49,6 +48,6 @@ module.exports = {
         '@babel/react',
         '@babel/typescript',
       ],
-    }
-  }
-}
+    },
+  },
+};

@@ -12,7 +12,7 @@ const {
   DEFAULT_PORT,
   DEFAULT_DIR,
   DEFAULT_PUBLIC_PATH,
-} = require(resolvePath('constants'));
+} = require(resolvePath('inMemoryConstants'));
 
 // Available scripts
 const scriptMap = new Map();
@@ -27,9 +27,9 @@ scriptMap.set('create', () => require(resolvePath('scripts/create')));
 
 // Execute command
 function run(runScript, cmd) {
-  const { port, input, output, dir, publicPath, label, analyzer } = cmd;
+  const { port, input, output, dir, publicPath, label, analyzer, browserSync } = cmd;
 
-  setGlobalState({
+  const config = {
     input: input || DEFAULT_INPUT_FOLDER,
     output: output || DEFAULT_OUTPUT_FOLDER,
     name: label || DEFAULT_PROJECT_NAME,
@@ -37,10 +37,18 @@ function run(runScript, cmd) {
     dir: dir || DEFAULT_DIR,
     publicPath: publicPath || DEFAULT_PUBLIC_PATH,
     analyzer: !!analyzer,
-  });
-  
+    browserSync: !!browserSync,
+    browserSyncPort: null,
+  };
+
   process.env.PORT = port || 8000;
-  
+
+  if (config.browserSync) {
+    config.browserSyncPort = parseInt(process.env.PORT, 10) + 100;
+  }
+
+  setGlobalState(config);
+
   if (scriptMap.has(runScript)) {
     scriptMap.get(runScript)();
   } else {
@@ -49,7 +57,7 @@ function run(runScript, cmd) {
       Type "ve --help" for available commands.
     `);
   }
-} 
+}
 
 // Cli
 program
@@ -61,6 +69,7 @@ program
   .option('-i --input <input>', 'Override default application src')
   .option('-o --output <output>', 'Override default production build destination')
   .option('-l, --label <label>', 'Sets a name for the project')
+  .option('-b, --browserSync', 'Enables browser sync')
   .action((cmd) => run('dev', cmd));
 
 program

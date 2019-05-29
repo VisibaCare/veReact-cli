@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
 
 const Home = React.lazy(() => import('./Home'));
 
-export default (props: RouteComponentProps) => <Suspense fallback='loading ...'><Home {...props}/></Suspense>;
+export default (props: RouteComponentProps) => <React.Suspense fallback='loading ...'><Home {...props} /></React.Suspense>;

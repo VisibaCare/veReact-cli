@@ -1,5 +1,5 @@
 # VE BoilerPlate
-This project was generated with [VE React CLI](https://github.com/VisibaCare/veReact-cli) version 1.3.0.
+This project was generated with [VE React CLI](https://github.com/VisibaCare/veReact-cli) version 1.4.0.
 
 ## Getting started
 Install node modules using [Yarn](https://yarnpkg.com/lang/en/). NPM does not currently work because of this [NPM issue](https://npm.community/t/packages-with-peerdependencies-are-incorrectly-hoisted/4794/5).
@@ -17,13 +17,6 @@ $ yarn dev
 ```
 The application will automatically reload if you change any of the source files.
 
-### Component Documentation server
-
-To start the component documentation server, run the following:
-```bash
-$ yarn docz
-```
-
 ## Production Build
 
 ### Application Build
@@ -33,21 +26,7 @@ $ yarn build
 ```
 The output files will be stored in the `dist/` directory.
 
-_The production build can also be served on a built in express server (mostly to test its service worker) by running `yarn start`_
-
-### Documentation client build
-To generate a production Component Documentation, run the following:
-```bash
-$ yarn docz:build
-```
-
-## Running tests
-### Unit & Integration
-To run these tests, run the following:
-```bash
-$ yarn test
-```
-These tests are served with [jest](https://jestjs.io/).
+_The production build can also be served on a built in express server by running `yarn start`_
 
 # TypeScript
 This bolierplate does not use the TypeScript emitter, only the compiler in the background as a type checker.

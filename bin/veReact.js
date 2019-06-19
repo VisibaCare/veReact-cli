@@ -69,7 +69,7 @@ program
   .option('-i --input <input>', 'Override default application src')
   .option('-o --output <output>', 'Override default production build destination')
   .option('-l, --label <label>', 'Sets a name for the project')
-  .option('-b, --browserSync', 'Enables browser sync')
+  // .option('-b, --browserSync', 'Enables browser sync')
   .action((cmd) => run('dev', cmd));
 
 program

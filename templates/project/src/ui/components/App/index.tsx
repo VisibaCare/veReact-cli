@@ -1,19 +1,14 @@
-import React, { Fragment } from 'react';
-import routes from '../../../routes';
-import GlobalStyle from '../GlobalStyle';
-import { Router } from '@reach/router';
-import NotFound from '../../../pages/notFound/index';
+import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import { BrowserRouter } from 'react-router-dom';
+import InjectRoutes from '../InjectRoutes';
+import routes from '../../../routes';
 
 const App: React.FC = () => {
   return (
-    <Fragment>
-      <Router>
-        {routes.map((page) => <page.component path={page.path} key={page.key} />)}
-        <NotFound default />
-      </Router>
-      <GlobalStyle />
-    </Fragment>
+    <BrowserRouter>
+      <InjectRoutes url='' routes={routes} />
+    </BrowserRouter>
   );
 };
 

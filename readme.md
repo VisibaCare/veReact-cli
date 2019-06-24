@@ -45,11 +45,9 @@ List of available `ve` commands.
 | @babel/preset-typescript       | ^7.1.0  | Enables TS in a Babel environment             |
 | babel-plugin-preval            | ^3.0.1  | Pre-evaluate code at build-time               |
 | babel-plugin-styled-components | ^1.5.0  | Enhances debugging and minifies CSS           |
-| offline-plugin                 | ^5.0.6  | Generates Service Worker with offline support |
 
 ## Todos
 * Add support to read and write out variables when copying templates, e.g. version.
-* Add ways to extend and override Babel config & Webpack config. 
 * Add "create component" & "create page" commands.
 * Add a way to create custom templates.
 

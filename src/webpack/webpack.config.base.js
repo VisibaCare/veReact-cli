@@ -15,7 +15,7 @@ const babelLoader = {
   options: {
     ...babelConfig,
     cacheDirectory: true,
-  }
+  },
 };
 
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
         use: [
           { loader: 'cache-loader' },
           threadLoader,
-          babelLoader
+          babelLoader,
         ],
       },
     ],
@@ -38,5 +38,8 @@ module.exports = {
   },
   performance: {
     hints: false,
+  },
+  node: { // TODO: Remove this when there's support for extending configs.
+    fs: 'empty',
   },
 };

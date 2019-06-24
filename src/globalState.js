@@ -6,6 +6,8 @@ let globalState = {
   dir: null,
   publicPath: null,
   analyzer: null,
+  browserSync: null,
+  browserSyncPort: null,
 };
 
 function setGlobalState(newState) {

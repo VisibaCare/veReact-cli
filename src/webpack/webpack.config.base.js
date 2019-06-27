@@ -1,5 +1,4 @@
 const { getPaths } = require('../paths');
-const babelConfig = require('../babel/babel.config');
 
 const paths = getPaths();
 
@@ -13,7 +12,7 @@ const threadLoader = {
 const babelLoader = {
   loader: 'babel-loader',
   options: {
-    ...babelConfig,
+    ...require('../getBabelConfig')(),
     cacheDirectory: true,
   },
 };

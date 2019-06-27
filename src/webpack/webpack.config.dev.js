@@ -5,11 +5,11 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('../paths');
-const base = require('./webpack.config.base');
 const dogOrCat = require('../dogOrCat');
 const { getGlobalState } = require('../globalState');
 
 const getConfig = () => {
+  const base = require('./webpack.config.base');
   const { browserSync, browserSyncPort } = getGlobalState();
   const paths = getPaths();
 

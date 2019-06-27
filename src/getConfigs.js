@@ -1,12 +1,8 @@
-const webpackDev = require('./webpack/webpack.config.dev');
-const webpackProd = require('./webpack/webpack.config.prod');
-const babel = require('./babel/babel.config');
-
 function getConfigs(success) {
   const obj = {
-    babel,
-    'webpackProduction': webpackProd(),
-    'webpackDevelop': webpackDev(),
+    babel: require('./getBabelConfig')(),
+    'webpackProduction': require('./getWebpackProd')(),
+    'webpackDevelop': require('./getWebpackDev')(),
   };
 
   success(obj);

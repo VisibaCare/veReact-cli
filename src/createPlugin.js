@@ -19,7 +19,7 @@ function modifyWebpackDev(config = {}) {
 }
 
 function modifyWebpackProd(config = {}) {
-  if (!config['modifyWebpackDev']) return undefined;
+  if (!config['modifyWebpackProd']) return undefined;
 
   return {
     webpackProd: {

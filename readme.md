@@ -1,18 +1,12 @@
-# VE React CLI
-
-### Development tool for consistent React environments.
-
+# ve-react-cli
 >_The **ve** stands for Visiba Engineering. The entire thing is a play on one of our company motto, "we act" -> "**v**e **Re**act". Clever uh? Okey, it was a bit silly._
 
-## Motivation
-Development environments for modern JavaScript has become quite a hassle to set up, having one dedicated repository helped tackling the time investment of creating and managing these.
-
-It solves two problems:
-* It'll trim off the stuff that's only relevant when first setting up the project. All the configurations and packages that exists to serve the project will be "hidden" for the developers, it'll allow us to focus on what the project is primarily made of.
-* Makes it possible to sync multiple React environments to use the same configurations without the need to update individual files in each. All that's needed is to install the newest version of `ve-react-cli`.
+A modern React toolkit with primary focus on TypeScript.
 
 ## Getting started
-Install the package globally
+
+### Installation
+Install ve-react-cli globally:
 ```bash
 $ npm install -g ve-react-cli
 
@@ -20,11 +14,20 @@ $ npm install -g ve-react-cli
 $ yarn global add ve-react-cli --prefix /usr/local
 ```
 
+### Creating a new application
+After it's been installed globally, we can create a new application with it.
+
+```bash
+$ ve new my-project
+$ cd my-project/
+$ yarn install
+```
+
 ## Commands
 List of available `ve` commands.
 
 ### Global
-* new project: `new {name of project}`
+* new application: `new {name of application}`
 
 ### Local
 * development: `dev {options}`
@@ -36,20 +39,31 @@ List of available `ve` commands.
 * override default input (default: `./src`): `-i, --input`
 * override default output (default: `./dist`): `-o, --output`
 
-## Notable packages that's used
-| Tools                          | Version | Info                                          |
-|--------------------------------|---------|-----------------------------------------------|
-| webpack                        | ^4.27.1 | Dev server and bundler                        |
-| @babel/core                    | ^7.0.0  | ECMAScript transpiler                         |
-| @babel/preset-react            | ^7.0.0  | Transforms JSX                                |
-| @babel/preset-typescript       | ^7.1.0  | Enables TS in a Babel environment             |
-| babel-plugin-preval            | ^3.0.1  | Pre-evaluate code at build-time               |
-| babel-plugin-styled-components | ^1.5.0  | Enhances debugging and minifies CSS           |
+## Plugins
+For advanced customization, plugins can be made to alter each build configuration.
 
-## Todos
-* Add support to read and write out variables when copying templates, e.g. version.
-* Add "create component" & "create page" commands.
-* Add a way to create custom templates.
+Plugins can be created by adding an `.verc.js` file in the root directory.
+
+```ts
+// .verc.js
+const { createPlugin } = require('ve-react-cli');
+
+const myPlugin = () => createPlugin({
+  modifyBabelRc: (babelrc) => {    
+    return babelrc;
+  },
+  modifyWebpackDev: (webpack) => {
+    return webpack;
+  },
+  modifyWebpackProd: (webpack) => {
+    return webpack;
+  },
+});
+
+module.exports = {
+  plugins: [myPlugin()],
+};
+```
 
 ## License
 This project is licensed under the MIT License - see the `LICENSE` file for details.

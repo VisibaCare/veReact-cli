@@ -2,11 +2,11 @@ const webpack = require('webpack');
 const HtmlWebpackPLugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const base = require('./webpack.config.base');
 const { getPaths } = require('../paths');
 const { publicPath } = require('../globalState').getGlobalState();
 
 const getConfig = () => {
+  const base = require('./webpack.config.base');
   const paths = getPaths();
 
   return {

@@ -13,7 +13,7 @@ const { name } = getGlobalState();
 
 getConfigs(({ webpackDevelop }) => {
   process.env.NODE_ENV = 'development';
-  
+
   const devServerOptions = {
     disableHostCheck: true,
     compress: true,
@@ -29,14 +29,14 @@ getConfigs(({ webpackDevelop }) => {
       disableDotRule: true,
     },
   };
-  
+
   const server = new WebpackDevServer(webpack(webpackDevelop), devServerOptions);
-  
+
   server.listen(process.env.PORT, 'localhost', (error) => {
     if (error) {
       throw new Error(error);
     }
-  
+
     console.log(`Starting ${chalk.green(name)} at: http://localhost:${process.env.PORT} ${dogOrCat()}`);
   });
 });

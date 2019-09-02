@@ -7,6 +7,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { getPaths } = require('../paths');
 const dogOrCat = require('../dogOrCat');
 const { getGlobalState } = require('../globalState');
+const address = require('address');
 
 const getConfig = () => {
   const base = require('./webpack.config.base');
@@ -14,6 +15,8 @@ const getConfig = () => {
   const paths = getPaths();
 
   const reactUtils = [];
+
+  const hostedUrl = `http://localhost:${process.env.PORT}/`;
 
   try {
     // If this fails, continue as normal.
@@ -40,7 +43,7 @@ const getConfig = () => {
       },
       output: {
         path: paths.publicPath,
-        publicPath: `http://localhost:${process.env.PORT}/`,
+        publicPath: browserSync ? `http://${address.ip()}:${browserSyncPort}` : hostedUrl,
         filename: `bundle-[name].js`
       },
       devtool: 'inline-source-map',
@@ -54,7 +57,7 @@ const getConfig = () => {
           compilationSuccessInfo: {
             messages: [
               `
-              Ready on http://localhost:${process.env.PORT} ${dogOrCat()}
+              Ready on ${hostedUrl} ${dogOrCat()}
               `,
             ],
           },
@@ -72,7 +75,7 @@ const getConfig = () => {
         new BrowserSyncPlugin({
           host: 'localhost',
           port: browserSyncPort,
-          proxy: `http://localhost:${process.env.PORT}/`,
+          proxy: hostedUrl,
           notify: false,
           open: false,
         }, {

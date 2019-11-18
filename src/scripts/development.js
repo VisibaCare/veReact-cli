@@ -9,10 +9,11 @@ const dogOrCat = require('../dogOrCat');
 const { getGlobalState } = require('../globalState');
 
 const paths = getPaths();
-const { name } = getGlobalState();
+const { name, buildConfig } = getGlobalState();
 
 getConfigs(({ webpackDevelop }) => {
   process.env.NODE_ENV = 'development';
+  process.env['BUILD_CONFIG'] = buildConfig || 'development';
 
   const devServerOptions = {
     disableHostCheck: true,

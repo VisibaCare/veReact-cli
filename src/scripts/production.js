@@ -7,10 +7,11 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { getGlobalState } = require('../globalState');
 const getConfigs = require('../getConfigs');
 
-const { name, analyzer } = getGlobalState();
+const { name, analyzer, buildConfig } = getGlobalState();
 
 getConfigs(({ webpackProduction }) => {
   process.env.NODE_ENV = 'production';
+  process.env['BUILD_CONFIG'] = buildConfig || 'production';
 
   if (analyzer) {
     webpackProduction.plugins.push(

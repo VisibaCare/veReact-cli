@@ -65,5 +65,15 @@ module.exports = {
 };
 ```
 
+## Provide Babel config for third party
+To expose the Babel config for modules that might need it, e.g. Jest.
+
+```ts
+// babel.config.js
+const { getBabelConfig } = require('ve-react-cli');
+
+module.exports = getBabelConfig();
+```
+
 ## License
 This project is licensed under the MIT License - see the `LICENSE` file for details.

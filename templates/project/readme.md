@@ -1,5 +1,5 @@
 # VE BoilerPlate
-This project was generated with [VE React CLI](https://github.com/VisibaCare/veReact-cli) version 1.5.0.
+This project was generated with [VE React CLI](https://github.com/VisibaCare/veReact-cli) version 1.5.4.
 
 ## Getting started
 Install node modules using [Yarn](https://yarnpkg.com/lang/en/). NPM does not currently work because of this [NPM issue](https://npm.community/t/packages-with-peerdependencies-are-incorrectly-hoisted/4794/5).

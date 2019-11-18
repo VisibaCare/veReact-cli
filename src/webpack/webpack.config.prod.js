@@ -3,7 +3,7 @@ const HtmlWebpackPLugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { getPaths } = require('../paths');
-const { publicPath } = require('../globalState').getGlobalState();
+const { publicPath, buildConfig } = require('../globalState').getGlobalState();
 
 const getConfig = () => {
   const base = require('./webpack.config.base');
@@ -67,7 +67,10 @@ const getConfig = () => {
       },
     },
     plugins: [
-      new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'production',
+        BUILD_CONFIG: buildConfig || 'production',
+      }),
       new webpack.optimize.ModuleConcatenationPlugin(),
       new CopyWebpackPlugin([
         {

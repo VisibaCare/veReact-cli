@@ -8,6 +8,7 @@ let globalState = {
   analyzer: null,
   browserSync: null,
   browserSyncPort: null,
+  buildConfig: null,
 };
 
 function setGlobalState(newState) {

@@ -11,7 +11,7 @@ const address = require('address');
 
 const getConfig = () => {
   const base = require('./webpack.config.base');
-  const { browserSync, browserSyncPort } = getGlobalState();
+  const { browserSync, browserSyncPort, buildConfig } = getGlobalState();
   const paths = getPaths();
 
   const reactUtils = [];
@@ -48,7 +48,9 @@ const getConfig = () => {
       },
       devtool: 'inline-source-map',
       plugins: [
-        new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+        new webpack.EnvironmentPlugin({
+          NODE_ENV: 'development',
+          BUILD_CONFIG: buildConfig || 'development' }),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),

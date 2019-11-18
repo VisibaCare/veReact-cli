@@ -27,7 +27,7 @@ scriptMap.set('create', () => require(resolvePath('scripts/create')));
 
 // Execute command
 function run(runScript, cmd) {
-  const { port, input, output, dir, publicPath, label, analyzer, browserSync } = cmd;
+  const { port, input, output, dir, publicPath, label, analyzer, browserSync, env } = cmd;
 
   const config = {
     input: input || DEFAULT_INPUT_FOLDER,
@@ -39,6 +39,7 @@ function run(runScript, cmd) {
     analyzer: !!analyzer,
     browserSync: !!browserSync,
     browserSyncPort: null,
+    buildConfig: env || null,
   };
 
   process.env.PORT = port || 8000;
@@ -70,6 +71,7 @@ program
   .option('-o --output <output>', 'Override default production build destination')
   .option('-l, --label <label>', 'Sets a name for the project')
   .option('-b, --browserSync', 'Enables browser sync')
+  .option('-e, --env <env>', 'Custom env property')
   .action((cmd) => run('dev', cmd));
 
 program
@@ -79,6 +81,7 @@ program
   .option('-l, --label <label>', 'Sets a name for the project')
   .option('-p, --publicPath <publicPath>', 'Sets a public path')
   .option('-a, --analyzer', 'Enables analyzer')
+  .option('-e, --env <env>', 'Custom env property')
   .action((cmd) => run('build', cmd));
 
 program

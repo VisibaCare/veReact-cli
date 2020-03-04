@@ -45,6 +45,8 @@ const getConfig = () => {
       '@babel/syntax-import-meta',
       '@babel/proposal-json-strings',
       '@babel/proposal-optional-catch-binding',
+      '@babel/plugin-proposal-nullish-coalescing-operator',
+      '@babel/plugin-proposal-optional-chaining',
       'styled-components',
     ],
     "env": {
